@@ -11,5 +11,5 @@ urlpatterns = [
     path('profile/<int:id>/', views.profile, name='profile'),
     path('gifts/create/', views.GiftCreate.as_view(), name='gifts_create'),
     path('gifts/<int:pk>/update/', views.GiftUpdate.as_view(), name='gifts_update'),
-    path('gift/<int:pk>/delete/', views.GiftDelete.as_view(), name='gifts_delete'),
+    path('gifts/<int:pk>/delete/', views.GiftDelete.as_view(), name='gifts_delete'),
 ]

@@ -12,22 +12,3 @@ class Gift(models.Model):
 
     def __str__(self):
         return f"{self.description} ({self.id})"
-
-# add a sad gift
-# implement photo uploading
-
-
-# class Comment(models.Model):
-#     text = models.CharField(max_length=250)
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-
-#     def __str__(self):
-#         return self.name
-
-
-# class Like(models.Model):
-#     text = models.CharField(max_length=250)
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-
-#     def __str__(self):
-#         return self.name

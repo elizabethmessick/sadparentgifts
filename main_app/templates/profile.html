@@ -2,9 +2,9 @@
 
 {% block content %}
 
-<h1>{{ user.username }}'s collection:</h1>
+<h1>{{ profile.username }}'s collection:</h1>
 
-{% for gift in user.gift_set.all %}
+{% for gift in profile.gift_set.all %}
 <div>
     <a href="#">
         <h3>{{ gift.description }}</h3>

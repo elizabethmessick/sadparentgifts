@@ -2,10 +2,11 @@
 {% block content %}
 
 
-<a href="{% url 'profile' user.id %}">Addded by {{ user.username }}!</a>
 
 <div class="card">
     <div class="card-content">
+        <a href="{% url 'profile' gift.user.id %}">Added by {{ gift.user.username }}!</a>
+
         <span class="card-title">{{ gift.description }}</span>
         <img src="{{gift.photo_url}}">
 

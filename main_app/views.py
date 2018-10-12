@@ -25,8 +25,8 @@ def about(request):
 
 
 def profile(request, id):
-    user = User.objects.get(id=id)
-    return render(request, 'profile.html', {'user': user})
+    profile = User.objects.get(id=id)
+    return render(request, 'profile.html', {'profile': profile})
 
 
 def gifts_detail(request, gift_id):
