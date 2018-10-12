@@ -12,7 +12,9 @@ class Gift(models.Model):
 
     def __str__(self):
         return f"{self.description} ({self.id})"
-#
+
+# add a sad gift
+# implement photo uploading
 
 
 # class Comment(models.Model):

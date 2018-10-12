@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Gift
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 
 # Create your views here.
@@ -67,7 +68,29 @@ def signup(request):
         return render(request, 'signup.html', {'form': form})
 
 
-def profile(request, username):
-    user = User.objects.get(username=username)
-    # cats = Cat.objects.filter(user=user)
-    return render(request, 'profile.html', {'username': username})
+def profile(request, id):
+    user = User.objects.get(id=id)
+    return render(request, 'profile.html', {'user': user})
+
+# CRUD views
+
+
+class GiftCreate(CreateView):
+    model = Gift
+    fields = '__all__'
+    success_url = '/'
+
+
+class GiftUpdate(UpdateView):
+    model = Gift
+    fields = ['description', 'photo_url']
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.save()
+        return HttpResponseRedirect('/' + str(self.object.pk))
+
+
+class GiftDelete(DeleteView):
+    model = Gift
+    success_url = '/'

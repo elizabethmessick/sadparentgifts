@@ -2,12 +2,14 @@
 
 {% block content %}
 
-<h1>{{ username }}'s collection:</h1>
+<h1>{{ user.username }}'s collection:</h1>
 
-{% for gift in gifts %}
-<a href="/discover_gifts/{{ gift.id }}">
-    <h3>{{ cat.name }}</h3>
-</a>
+{% for gift in user.gift_set.all %}
+<div>
+    <a href="#">
+        <h3>{{ gift.description }}</h3>
+    </a>
+</div>
 
 {% endfor %}
 {% endblock %}
