@@ -23,6 +23,17 @@ def discover_gifts(request):
 def about(request):
     return render(request, 'about.html')
 
+
+def profile(request, id):
+    user = User.objects.get(id=id)
+    return render(request, 'profile.html', {'user': user})
+
+
+def gifts_detail(request, gift_id):
+    gift = Gift.objects.get(id=gift_id)
+    return render(request, 'gifts/detail.html', {'gift': gift})
+
+
 # Authentication views
 
 
@@ -68,17 +79,18 @@ def signup(request):
         return render(request, 'signup.html', {'form': form})
 
 
-def profile(request, id):
-    user = User.objects.get(id=id)
-    return render(request, 'profile.html', {'user': user})
-
 # CRUD views
 
 
 class GiftCreate(CreateView):
     model = Gift
-    fields = '__all__'
-    success_url = '/'
+    fields = ['description', 'photo_url']
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return HttpResponseRedirect('/')
 
 
 class GiftUpdate(UpdateView):
