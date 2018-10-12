@@ -3,7 +3,8 @@
 
 <h1>Discover Other Sad Parent Gifts</h1>
 {% for gift in gifts %}
-<img src="{{gift.photo_url}}">
+<a href="{% url 'gifts_detail' gift.id %}"><img src="{{gift.photo_url}}"></a>
+
 {% empty %}
 <h3>There are no gifts! Parents don't exist! Woo hoo! No rules!</h3>
 {% endfor %}
