@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>CatCollector</title>
+    <title>Sad Parent Gifts</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -18,16 +18,16 @@
         <nav>
             <div class="nav-wrapper">
                 <ul>
-                    <li><a href="/" class="left brand-logo">&nbsp;&nbsp;CatCollector</a></li>
+                    <li><a href="/" class="left brand-logo">&nbsp;&nbsp;Sad Parent Gifts</a></li>
                 </ul>
                 <ul class="right">
                     <li><a href="{% url 'about' %}">About</a></li>
-                    <li><a href="#">Add a Sad Gifts</a></li>
+                    <li><a href="#">Add a Sad Gift</a></li>
                     <li><a href="#">Discover Gifts</a></li>
 
                     {% if user.is_authenticated %}
                     <li> | </li>
-                    <li><a href="{% url 'profile' user.username %}">Hello, {{ user.username }}!</a></li>
+                    <li><a href="{% url 'profile' user.id %}">Hello, {{ user.username }}!</a></li>
                     <li> | </li>
                     <li><a href="{% url 'logout' %}">Logout</a></li>
                     {% else %}
