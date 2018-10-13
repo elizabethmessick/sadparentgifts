@@ -1,6 +1,4 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from django.http import HttpResponseRedirect
 from .forms import LoginForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
@@ -48,13 +46,13 @@ def login_view(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return HttpResponseRedirect('/')
+                    return redirect('/')
                 else:
                     print("The account has been disabled.")
-                    return HttpResponseRedirect('/')
+                    return redirect('/')
             else:
                 print("The username and/or password is incorrect.")
-                return HttpResponseRedirect('/')
+                return redirect('/')
     else:
         form = LoginForm()
         return render(request, 'login.html', {'form': form})
@@ -62,7 +60,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect('/')
+    return redirect('/')
 
 
 def signup(request):
@@ -90,7 +88,7 @@ class GiftCreate(CreateView):
         self.object = form.save(commit=False)
         self.object.user = self.request.user
         self.object.save()
-        return HttpResponseRedirect('/')
+        return redirect(f"/profile/{self.request.user.id}")
 
 
 class GiftUpdate(UpdateView):
@@ -100,7 +98,7 @@ class GiftUpdate(UpdateView):
     def form_valid(self, form):
         self.object = form.save(commit=False)
         self.object.save()
-        return HttpResponseRedirect('/' + str(self.object.pk))
+        return redirect(f"/gifts/{self.object.pk}")
 
 
 class GiftDelete(DeleteView):
