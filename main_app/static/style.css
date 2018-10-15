@@ -2,10 +2,16 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    text-align: center;
   }
 
   main {
     flex: 1 0 auto;
+  }
+
+  .container {
+    width: 100%;
+    align-content: flex-start;
   }
 
   footer.page-footer {
@@ -16,6 +22,47 @@ body {
       color: red;
   }
 
-  header {
-    background-color: purple;
-  }
+.nav-wrapper {
+  background-color: dodgerblue;
+}
+
+
+
+.detail-photo {
+  max-width: 600px;
+  max-height: 600px;
+}
+
+.nav-image {
+  height: 40px;
+  width: 40px;
+}
+
+#profile-name {
+  color: black;
+}
+
+#profile-photo-set{
+  display: inline-block;
+  height: 290px;
+  width: 290px;
+  margin: 10px;
+}
+
+.card {
+  text-align: center;
+}
+
+.gallery-photos {
+  width: 300px;
+  height: 300px;
+  margin: 15px;
+}
+
+.photo-container {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  align-content: flex-start;
+
+}

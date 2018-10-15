@@ -2,10 +2,13 @@
 {% block content %}
 
 <h1>Discover Other Sad Parent Gifts</h1>
-{% for gift in gifts %}
-<a href="{% url 'gifts_detail' gift.id %}"><img src="{{gift.photo_url}}"></a>
+<div class="photo-container">
+    {% for gift in gifts %}
+    <a href="{% url 'gifts_detail' gift.id %}"><img src="{{gift.photo_url}}" class="gallery-photos"></a>
 
-{% empty %}
-<h3>There are no gifts! Parents don't exist! Woo hoo! No rules!</h3>
-{% endfor %}
+    {% empty %}
+    <h3>There are no gifts! Parents don't exist! Woo hoo! No rules!</h3>
+    {% endfor %}
+</div>
+
 {% endblock %}

@@ -16,11 +16,3 @@ class Gift(models.Model):
 
     def get_absolute_url(self):
         return reverse('profile', kwargs={'id': 1})
-
-
-# class Photo(models.Model):
-#     url = models.CharField(max_length=200)
-#     gift = models.ForeignKey(Gift, on_delete=models.CASCADE)
-
-#     def __str__(self):
-#         return f"Photo for gift_id: {self.gift_id} @{self.url}"

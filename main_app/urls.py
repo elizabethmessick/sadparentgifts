@@ -12,5 +12,4 @@ urlpatterns = [
     path('gifts/create/', views.GiftCreate.as_view(), name='gifts_create'),
     path('gifts/<int:pk>/update/', views.GiftUpdate.as_view(), name='gifts_update'),
     path('gifts/<int:pk>/delete/', views.GiftDelete.as_view(), name='gifts_delete'),
-
 ]
