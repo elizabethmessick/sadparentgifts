@@ -13,5 +13,9 @@ body {
   }
   
   h1 {
-      color: dodgerblue;
+      color: red;
+  }
+
+  header {
+    background-color: purple;
   }

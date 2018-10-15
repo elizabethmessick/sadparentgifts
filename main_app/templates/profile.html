@@ -2,12 +2,13 @@
 
 {% block content %}
 
-<h1>{{ profile.username }}'s collection:</h1>
+<h1>{{ profile.username }}'s profile:</h1>
 
 {% for gift in profile.gift_set.all %}
 <div>
-    <a href="#">
+    <a href="{% url 'gifts_detail' gift.id %}">
         <h3>{{ gift.description }}</h3>
+        <img src="{{gift.photo_url}}">
     </a>
 </div>
 

@@ -6,11 +6,15 @@
 <div class="card">
     <div class="card-content">
         <a href="{% url 'profile' gift.user.id %}">Added by {{ gift.user.username }}!</a>
-
+        <div class="card-action">
+            <a href="{% url 'gifts_update' gift.id %}">Edit</a>
+            <a href="{% url 'gifts_delete' gift.id %}">Delete</a>
+        </div>
         <span class="card-title">{{ gift.description }}</span>
         <img src="{{gift.photo_url}}">
 
-    </div>
-</div>
 
-{% endblock %}
+    </div>
+
+
+    {% endblock %}

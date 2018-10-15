@@ -4,8 +4,13 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Gift
+# from .models import Photo
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+import uuid
+import boto3
 
+S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
+BUCKET = 'sadgiftuser'
 
 # Create your views here.
 
@@ -13,9 +18,6 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 def discover_gifts(request):
     gifts = Gift.objects.all()
     return render(request, 'discover_gifts.html', {'gifts': gifts})
-
-# implement photo_url
-# google how to change from all to 10 random list items
 
 
 def about(request):
@@ -82,12 +84,23 @@ def signup(request):
 
 class GiftCreate(CreateView):
     model = Gift
-    fields = ['description', 'photo_url']
+    fields = ['description']
 
     def form_valid(self, form):
-        self.object = form.save(commit=False)
-        self.object.user = self.request.user
-        self.object.save()
+        gift = form.instance
+        gift.user = self.request.user
+        photo_file = self.request.FILES.get('photo-file', None)
+        if photo_file:
+            s3 = boto3.client('s3')
+            key = uuid.uuid4().hex[:6] + \
+                photo_file.name[photo_file.name.rfind('.'):]
+            try:
+                s3.upload_fileobj(photo_file, BUCKET, key)
+                photo_url = f"{S3_BASE_URL}{BUCKET}/{key}"
+                gift.photo_url = photo_url
+            except:
+                print('An error occurred uploading file to S3')
+        gift.save()
         return redirect(f"/profile/{self.request.user.id}")
 
 
