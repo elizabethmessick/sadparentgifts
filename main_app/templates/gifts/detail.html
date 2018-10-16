@@ -6,10 +6,12 @@
 <div class="card">
     <div class="card-content">
         <a href="{% url 'profile' gift.user.id %}">Added by {{ gift.user.username }}!</a>
+        {% ifequal gift.user user %}
         <div class="card-action">
             <a href="{% url 'gifts_update' gift.id %}">Edit</a>
             <a href="{% url 'gifts_delete' gift.id %}">Delete</a>
         </div>
+        {% endifequal %}
         <span class="card-title">{{ gift.description }}</span>
         <img src="{{gift.photo_url}}" class="detail-photo">
 

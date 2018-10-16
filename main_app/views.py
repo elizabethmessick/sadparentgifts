@@ -4,8 +4,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Gift
-# from .models import Photo
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 import uuid
 import boto3
 
@@ -39,7 +40,6 @@ def gifts_detail(request, gift_id):
 
 def login_view(request):
     if request.method == 'POST':
-        # if post, then authenticate (user submitted username and password)
         form = LoginForm(request.POST)
         if form.is_valid():
             u = form.cleaned_data['username']
@@ -54,7 +54,7 @@ def login_view(request):
                     return redirect('/')
             else:
                 print("The username and/or password is incorrect.")
-                return redirect('/')
+                return redirect('/login')
     else:
         form = LoginForm()
         return render(request, 'login.html', {'form': form})
@@ -78,10 +78,10 @@ def signup(request):
         form = UserCreationForm()
         return render(request, 'signup.html', {'form': form})
 
-
 # CRUD views
 
 
+@method_decorator(login_required, name='dispatch')
 class GiftCreate(CreateView):
     model = Gift
     fields = ['description']
@@ -104,16 +104,30 @@ class GiftCreate(CreateView):
         return redirect(f"/profile/{self.request.user.id}")
 
 
+@method_decorator(login_required, name='dispatch')
 class GiftUpdate(UpdateView):
     model = Gift
-    fields = ['description', 'photo_url']
+    fields = ['description']
 
     def form_valid(self, form):
-        self.object = form.save(commit=False)
-        self.object.save()
-        return redirect(f"/gifts/{self.object.pk}")
+        gift = form.instance
+        gift.user = self.request.user
+        photo_file = self.request.FILES.get('photo-file', None)
+        if photo_file:
+            s3 = boto3.client('s3')
+            key = uuid.uuid4().hex[:6] + \
+                photo_file.name[photo_file.name.rfind('.'):]
+            try:
+                s3.upload_fileobj(photo_file, BUCKET, key)
+                photo_url = f"{S3_BASE_URL}{BUCKET}/{key}"
+                gift.photo_url = photo_url
+            except:
+                print('An error occurred uploading file to S3')
+        gift.save()
+        return redirect(f"/profile/{self.request.user.id}")
 
 
+@method_decorator(login_required, name='dispatch')
 class GiftDelete(DeleteView):
     model = Gift
     success_url = '/'
