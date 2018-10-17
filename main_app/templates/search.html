@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="search-header">
+    <h1>Search For Other Sad Children Profiles</h1>
+</div>
+<div class="search-container">
+    {% for result in search %}
+    <a class="search" href="{% url 'profile' result.id %}">@{{result.username}}</a>
+    {% empty %}
+    <h3>There is nobody by that name! They died of sadness from their parents not loving them!</h3>
+    {% endfor %}
+</div>
+
+{% endblock %}

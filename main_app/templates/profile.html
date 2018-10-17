@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
-
 {% block content %}
 
-<h1 id="profile-name">{{ profile.username }}'s profile:</h1>
+{% ifnotequal profile user %}
+<h1 id="profile-name">{{ profile.username }}'s Profile</h1>
+{% endifnotequal %}
+{% ifequal profile user %}
+<h1 id="profile-name">My profile</h1>
+<a href="{% url 'gifts_create' %}">Upload a Sad Gift to your profile</a>
+{% endifequal %}
 <div class="photo-container">
-    {% for gift in profile.gift_set.all %}
+    {% for gift in profile.gift_set.all reversed %}
     <a href="{% url 'gifts_detail' gift.id %}">
         <img src="{{gift.photo_url}}" class="gallery-photos">
     </a>

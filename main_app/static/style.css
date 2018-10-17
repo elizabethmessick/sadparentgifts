@@ -1,6 +1,10 @@
+* {
+  list-style: none;
+}
+
 body {
   margin: 0;
-  background: teal;
+  background: black;
   font-weight: 400;
   color: white; 
   display: flex;
@@ -25,18 +29,23 @@ header::after {
   clear: both;
 }
 
-/* .logo {
+#logo {
   float: left;
   padding: 10px 0;
-  height: 40px;
-  width: 40px;
-} */
+  margin: 5px; 
+  color: yellow;
+  font-size: 20px;
+}
 
 nav {
-  text-align: center;
+  display: flex;
+  /* text-align: center; */
 }
 
 nav ul {
+  float: right;
+  display: flex; 
+  flex-wrap: wrap;
   margin: 0; 
   padding: 0;
   list-style: none;
@@ -84,8 +93,8 @@ footer.page-footer {
 }
 
 .detail-photo {
-  max-width: 600px;
-  max-height: 600px;
+  max-width: 500px;
+  max-height: 400px;
 }
 
 #profile-photo-set{
@@ -106,4 +115,59 @@ footer.page-footer {
   flex-flow: row wrap;
   align-content: flex-start;
   width: 100%;
+}
+
+#discover-header {
+  background-image: url("https://i.imgur.com/uclrpbx.png");
+  height: 250px;
+  color: black;
+}
+
+#about {
+  height: 500px;
+  width: 600px;
+  display: inline-block;
+  text-align: center;
+  text-transform: none;
+}
+
+footer {
+  background: #55d6aa;
+  color: yellow; 
+  height: 30px;
+}
+
+#gift-form {
+  background-color: yellow;
+  height: 300px;
+  width: 700px;
+  display: inline-block;
+  color: black;
+  text-align: center;
+  display: inline-block;
+}
+
+
+.card {
+  display: flex;
+}
+
+#card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.search{
+  display: block;
+}
+
+
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: red;
+  }
+  #discover-link, #about-link{
+    display: none;
+  }
+  
 }
