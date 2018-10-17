@@ -19,4 +19,5 @@ urlpatterns = [
     path('gifts/<int:pk>/update_comment',
          views.CommentUpdate.as_view(), name='update_comment'),
     path('search', views.search, name='search'),
+    path('not_authorized', views.not_authorized, name='not_authorized'),
 ]

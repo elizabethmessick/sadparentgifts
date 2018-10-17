@@ -25,6 +25,10 @@ def about(request):
     return render(request, 'about.html')
 
 
+def not_authorized(request):
+    return render(request, 'not_authorized.html')
+
+
 def profile(request, id):
     profile = User.objects.get(id=id)
     return render(request, 'profile.html', {'profile': profile})
@@ -137,7 +141,7 @@ class GiftUpdate(UpdateView):
     def form_valid(self, form):
         gift = form.instance
         if gift.user != self.request.user:
-            return redirect('/')
+            return redirect('/not_authorized')
         photo_file = self.request.FILES.get('photo-file', None)
         if photo_file:
             s3 = boto3.client('s3')
@@ -157,15 +161,16 @@ class GiftUpdate(UpdateView):
 class GiftDelete(DeleteView):
     model = Gift
 
-    # def form_valid(self, form):
-    #     gift = form.instance
-    #     if gift.user != self.request.user:
-    #         return redirect('/about')
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        if self.object.user == request.user:
+            self.object.delete()
+            return redirect(f"/profile/{self.request.user.id}")
+        else:
+            return redirect('/not_authorized')
 
-    def get_success_url(self, **kwargs):
-        return f"/profile/{self.request.user.id}"
 
-
+@method_decorator(login_required, name='dispatch')
 class CommentUpdate(UpdateView):
     model = Comment
     fields = ['text']
