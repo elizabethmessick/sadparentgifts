@@ -1,1 +1,1 @@
-web: gunicorn {sadparentgifts}.wsgi --log-file -
+web: gunicorn sadparentgifts.wsgi --log-file -
