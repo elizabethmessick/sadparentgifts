@@ -9,7 +9,7 @@ class Gift(models.Model):
     description = models.CharField(max_length=150)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     photo_url = models.CharField(
-        max_length=150, default='http://www.retrofestiveblog.ca/wp-content/uploads/2014/12/badly-wrapped-gift.png')
+        max_length=150)
 
     def __str__(self):
         return f"{self.description} ({self.id}) @{self.photo_url}"
