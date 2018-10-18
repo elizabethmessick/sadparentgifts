@@ -12,6 +12,7 @@
     <link rel="shortcut icon" type="image/png" href="https://cdn4.iconfinder.com/data/icons/fugue/icon_shadowless/present.png" />
     <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch|Yrsa" rel="stylesheet">
 
+
 </head>
 
 <body>
@@ -19,12 +20,9 @@
         <div class="nav-container">
 
             <nav>
-                <p id="logo">Sad Parent Gifts</p>
-
-                <form class="search-bar" action="/search">
-                    <input type="text" placeholder="Search for usernames" name="search">
-                    <button type="submit">Search!</button>
-                </form>
+                <div id="upper-nav">
+                    <h1 id="logo">Sad Parent Gifts</h1>
+                </div>
 
                 <ul class="right">
                     <li id="about-link"><a href="{% url 'about' %}">About</a></li>
@@ -37,13 +35,25 @@
                     <li><a href="{% url 'login' %}">Login</a></li>
                     <li><a href="{% url 'signup' %}">Sign Up</a></li>
                     {% endif %}
+                    <li>
+                        <form class="search-bar" action="/search">
+                            <input type="text" placeholder="Search for usernames" name="search">
+                            <button type="submit">Search!</button>
+                        </form>
+                    </li>
                 </ul>
         </div>
         </nav>
     </header>
     <main class="container">
+        <hr />
+        <hr />
+
         {% block content %}
         {% endblock %}
+        <hr />
+        <hr />
+
     </main>
     <footer class="page-footer">
         <div class="right">© 2018 Sad Parent Gifts &nbsp;</div>
