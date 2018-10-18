@@ -16,29 +16,29 @@
 
 <body>
     <header>
-        <!-- <div class="nav-container"> -->
+        <div class="nav-container">
 
-        <nav>
-            <p id="logo">Sad Parent Gifts</p>
+            <nav>
+                <p id="logo">Sad Parent Gifts</p>
 
-            <form class="search-bar" action="/search">
-                <input type="text" placeholder="Search for usernames" name="search">
-                <button type="submit">Search!</button>
-            </form>
+                <form class="search-bar" action="/search">
+                    <input type="text" placeholder="Search for usernames" name="search">
+                    <button type="submit">Search!</button>
+                </form>
 
-            <ul class="right">
-                <li id="about-link"><a href="{% url 'about' %}">About</a></li>
-                <li id="discover-link"><a href="/">Discover Gifts</a></li>
-                {% if user.is_authenticated %}
-                <li><a href="{% url 'gifts_create' %}">Add a Sad Gift</a></li>
-                <li><a href="{% url 'profile' user.id %}">Hello, {{ user.username }}!</a></li>
-                <li><a href="{% url 'logout' %}">Logout</a></li>
-                {% else %}
-                <li><a href="{% url 'login' %}">Login</a></li>
-                <li><a href="{% url 'signup' %}">Sign Up</a></li>
-                {% endif %}
-            </ul>
-            <!-- </div> -->
+                <ul class="right">
+                    <li id="about-link"><a href="{% url 'about' %}">About</a></li>
+                    <li id="discover-link"><a href="/">Discover Gifts</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'gifts_create' %}">Add a Sad Gift</a></li>
+                    <li><a href="{% url 'profile' user.id %}">Hello, {{ user.username }}!</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                    {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                    {% endif %}
+                </ul>
+        </div>
         </nav>
     </header>
     <main class="container">

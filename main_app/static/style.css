@@ -1,11 +1,10 @@
-* {
+ * {
   list-style: none;
-}
+  text-decoration: none;
+} 
 
 body {
   margin: 0;
-  background: black;
-  color: white; 
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -81,14 +80,20 @@ nav a::before {
 nav a:hover::before {
   width: 100%;
 }
+
+footer {
+  background: #55d6aa;
+  color: yellow; 
+  height: 30px;
+  font-size: 30px;
+  text-align: center;
+  font-family: 'Cabin Sketch', cursive;
+
+} 
 main {
   flex: 1 0 auto;
 }
 
-.detail-photo {
-  max-width: 500px;
-  max-height: 400px;
-}
 
 #profile-photo-set{
   display: inline-block;
@@ -133,53 +138,13 @@ main {
 }
 
 
-
-footer {
-  background: #55d6aa;
-  color: yellow; 
-  height: 30px;
-  font-size: 30px;
-  font-family: 'Cabin Sketch', cursive;
-
-}
-
 #gift-form {
-  background-color: yellow;
   height: 300px;
   width: 700px;
   display: inline-block;
   color: black;
   text-align: center;
   display: inline-block;
-}
-
-
-.detail {
-  display: flex;
-  flex-direction: column;
-  margin: 15px;
-  justify-content: center;
-}
-
-.card {
-  display: flex;
-justify-content: center;;}
-
-#card-content {
-  display: flex;
-  flex-direction: column;
-  color: black;
-  background-color: yellow;
-  height: 300px;
-  width: 300px;
-
-}
-
-#card-comment{
-  background-color: dodgerblue;
-  color: white;
-  height: 300px;
-  width: 300px;
 }
 
 .search{
@@ -212,6 +177,50 @@ justify-content: center;;}
 .redrum {
   height: 333px;
   width: 333px;
+}
+
+
+#detail {
+  display: flex;
+  flex-direction: column;
+}
+
+#card-detail {
+  display: flex;
+  margin-top: 20px;
+}
+
+#detail-photo img{
+  display: flex;
+  height: 500px;
+  width: 600px;
+}
+
+#card-description { 
+  font-size: 20px;
+  display: flex; 
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center; 
+}
+
+
+#card-comment {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+} 
+
+.detail-button {
+  height: 50px;
+  width: 60px;
+  margin: 10px;
+  text-align: center;
+  
+}
+
+.username {
+  font-size: 30px;
 }
 
 @media only screen and (max-width: 600px) {
