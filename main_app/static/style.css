@@ -10,6 +10,8 @@ body {
   flex-direction: column;
   text-align: center;
   font-family: 'Yrsa', serif;
+  background-color: rgb(255, 247, 93);
+
 }
 
 .nav-container {
@@ -25,6 +27,9 @@ header {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+  background-color: rgb(80, 255, 241);
+  width: 100%;
+  height: 25%;
 }
 
 header::after {
@@ -41,12 +46,10 @@ header::after {
 }
 
 #logo {
-  /* float: left; */
-  /* padding: 10px 0; */
-  /* margin: 5px;  */
-  /* color: yellow;
-  font-size: 20px; */
-}
+  padding: 10px 0;
+  margin: 5px; 
+  font-size: 30px;
+} 
 
 /* nav {
   display: flex;
@@ -93,10 +96,12 @@ nav a:hover::before {
 }
 
 footer {
-  height: 30px;
   font-size: 30px;
   color: red;
   text-align: center;
+  background-color: rgb(80, 255, 241);
+  width: 100%;
+  height: 25%;
 
 } 
 main {
