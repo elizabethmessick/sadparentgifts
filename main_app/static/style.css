@@ -34,14 +34,12 @@ header {
 
 header::after {
   content: '';
-  /* display: table; */
   clear: both;
 }
 
 #upper-nav {
   display: flex;
   flex-direction: column;
-  /* margin: 0 auto; */
   color: red;
 }
 
@@ -51,12 +49,7 @@ header::after {
   font-size: 30px;
 } 
 
-/* nav {
-  display: flex;
-} */
-
 ul {
-  /* float: right; */
   display: flex; 
   margin: 0 auto;
   padding: 0;
@@ -82,7 +75,6 @@ nav a:hover {
 
 nav a::before {
   content: '';
-  /* display: block; */
   height: 3px; 
   background-color: #444;
   position: absolute;
