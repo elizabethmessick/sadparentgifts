@@ -17,14 +17,12 @@ Sad Parent Gifts is an instagram-like app where people are free to post photos o
 - HTML5
 - Python 
 - Django
-    - This is the Python framework 
 - Heroku
-    - This is ued to deploy my app 
 - boto3
-    - I used boto3 to upload photos
+- AWS
 
 ## Getting Started 
-- [Click to play!](https://safe-castle-14369.herokuapp.com/)
+- [Sad Parent Gifts](https://safe-castle-14369.herokuapp.com/)
 - [My Trello Board](https://trello.com/b/aFmYspOF/project-2)
 
 ## Unsolved problems (if any):
