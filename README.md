@@ -13,15 +13,15 @@ Sad Parent Gifts is an instagram-like app where people are free to post photos o
 
 
 ## Technologies Used:
-CSS
-HTML5
-Django 
-Python
-Javascript
+- CSS
+- HTML5
+- Django 
+- Python
+- Javascript
 
 ## Getting Started 
-[Click to play!](https://safe-castle-14369.herokuapp.com/)
-[My Trello Board](https://trello.com/b/aFmYspOF/project-2)
+- [Click to play!](https://safe-castle-14369.herokuapp.com/)
+- [My Trello Board](https://trello.com/b/aFmYspOF/project-2)
 
 ## Unsolved problems (if any):
 - CSS issues with responsiveness 
